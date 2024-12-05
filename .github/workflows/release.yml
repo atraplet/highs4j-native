@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    uses: atraplet/clarabel4j-native/.github/workflows/build.yml@master
+    uses: atraplet/highs4j-native/.github/workflows/build.yml@master
 
   release:
     runs-on: ubuntu-latest

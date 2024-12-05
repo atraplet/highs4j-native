@@ -1,4 +1,4 @@
-package com.ustermetrics.clarabel4j_native;
+package com.ustermetrics.highs4j_native;
 
 import org.junit.jupiter.api.Test;
 import org.scijava.nativelib.NativeLoader;
@@ -9,7 +9,7 @@ class LoadLibraryTest {
 
     @Test
     void loadLibrary() throws IOException {
-        NativeLoader.loadLibrary("clarabel_c");
+        NativeLoader.loadLibrary("highs");
     }
 
 }

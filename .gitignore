@@ -122,6 +122,6 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-/src/main/resources/natives/windows_64/clarabel_c.dll
-/src/main/resources/natives/linux_64/libclarabel_c.so
-/src/main/resources/natives/osx_arm64/libclarabel_c.dylib
+/src/main/resources/natives/windows_64/highs.dll
+/src/main/resources/natives/linux_64/libhighs.so
+/src/main/resources/natives/osx_arm64/libhighs.dylib

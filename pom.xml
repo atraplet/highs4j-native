@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ustermetrics</groupId>
-    <artifactId>clarabel4j-native</artifactId>
-    <version>1-SNAPSHOT</version>
+    <artifactId>highs4j-native</artifactId>
+    <version>0-SNAPSHOT</version>
 
     <properties>
         <java.version>23</java.version>
@@ -16,12 +16,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <git.repository>https://github.com/atraplet/${project.artifactId}</git.repository>
         <natives.dir>src/main/resources/natives</natives.dir>
-        <natives.lib.version>0.9.0</natives.lib.version>
-        <natives.download.url>https://github.com/atraplet/Clarabel.cpp/releases/download</natives.download.url>
+        <natives.lib.version>1.8.1</natives.lib.version>
+        <natives.download.url>https://github.com/atraplet/HiGHS/releases/download</natives.download.url>
     </properties>
 
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>Clarabel Solver for Java Native Libraries</description>
+    <description>Highs Solver for Java Native Libraries</description>
     <url>${git.repository}</url>
 
     <licenses>
@@ -115,39 +115,39 @@
                 <version>1.11.5</version>
                 <executions>
                     <execution>
-                        <id>download libclarabel_c.so</id>
+                        <id>download libhighs.so</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>${natives.download.url}/v${natives.lib.version}/libclarabel_c.so</url>
+                            <url>${natives.download.url}/v${natives.lib.version}/libhighs.so</url>
                             <outputDirectory>${project.basedir}/${natives.dir}/linux_64</outputDirectory>
-                            <sha256>08c7493d55cd5230fc361f192696fda158142fd9c1b1122e6386a55629155cfc</sha256>
+                            <sha256>ecb7c62e9e51f70a450b59c1c534c65b19782e29b8cbbf93869edc77d2d8cb7e</sha256>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>download clarabel_c.dll</id>
+                        <id>download highs.dll</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>${natives.download.url}/v${natives.lib.version}/clarabel_c.dll</url>
+                            <url>${natives.download.url}/v${natives.lib.version}/highs.dll</url>
                             <outputDirectory>${project.basedir}/${natives.dir}/windows_64</outputDirectory>
-                            <sha256>0457eda42532ae2d12532f7b6471a1d9f0f41bcb2f09a523882e79f45c1286a4</sha256>
+                            <sha256>86252259a7ba61a5e8530d739726fc0dc392b3e1ab369bf0412bdda7610a31a2</sha256>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>download libclarabel_c.dylib</id>
+                        <id>download libhighs.dylib</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>${natives.download.url}/v${natives.lib.version}/libclarabel_c.dylib</url>
+                            <url>${natives.download.url}/v${natives.lib.version}/libhighs.dylib</url>
                             <outputDirectory>${project.basedir}/${natives.dir}/osx_arm64</outputDirectory>
-                            <sha256>c6af2579cbed601c0e6bfe26feb48fff28da54ffd1541c7682f5598c94e153fa</sha256>
+                            <sha256>669ac7d87f9b4c11db23f35b25ace4a537c3abf180c3609067d9842a6750542f</sha256>
                         </configuration>
                     </execution>
                 </executions>
