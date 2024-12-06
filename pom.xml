@@ -21,7 +21,7 @@
     </properties>
 
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>Highs Solver for Java Native Libraries</description>
+    <description>HiGHS Solver for Java Native Libraries</description>
     <url>${git.repository}</url>
 
     <licenses>
