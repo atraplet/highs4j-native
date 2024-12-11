@@ -6,7 +6,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.ustermetrics/highs4j-native)](https://central.sonatype.com/artifact/com.ustermetrics/highs4j-native)
 [![Apache License, Version 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/atraplet/highs4j-native/blob/master/LICENSE)
 
-highs4j-native (HiGHS Solver for Java Native Libraries) contains shared library release binaries
+highs4j-native (HiGHS Solver for Java Native Libraries) bundles shared library release binaries
 of [HiGHS](https://ergo-code.github.io/HiGHS) for [highs4j](https://github.com/atraplet/highs4j) for Linux (linux_64),
 Windows (windows_64), and MacOS (osx_arm64).
 
