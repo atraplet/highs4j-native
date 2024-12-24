@@ -123,7 +123,7 @@
                         <configuration>
                             <url>${natives.download.url}/v${natives.lib.version}/libhighs.so</url>
                             <outputDirectory>${project.basedir}/${natives.dir}/linux_64</outputDirectory>
-                            <sha256>f49f29dccfae72d1ae33ee3a0bf6f4f23b00d5e0506524c81804ef0258ef8c77</sha256>
+                            <sha256>7a6df6b0fd7d2b97439325d722d03fdd96e11d203b6b466485cfde14f9904443</sha256>
                         </configuration>
                     </execution>
                     <execution>
@@ -135,7 +135,7 @@
                         <configuration>
                             <url>${natives.download.url}/v${natives.lib.version}/highs.dll</url>
                             <outputDirectory>${project.basedir}/${natives.dir}/windows_64</outputDirectory>
-                            <sha256>b64ccd35171068f5ff83ffbd8365e5a000ad50acb1c3648e83453c0fa66c8d4c</sha256>
+                            <sha256>ec990da1bc9315228b33dcf3c4fc0ee1206b4e5cf064e41ec7cd2ec8f7b3115d</sha256>
                         </configuration>
                     </execution>
                     <execution>
@@ -147,7 +147,7 @@
                         <configuration>
                             <url>${natives.download.url}/v${natives.lib.version}/libhighs.dylib</url>
                             <outputDirectory>${project.basedir}/${natives.dir}/osx_arm64</outputDirectory>
-                            <sha256>13ea72bb0a7508dbc4bd2888b45a79982c7dd736df9bb5373dfb9f54a4952d2b</sha256>
+                            <sha256>6db5b02a47f2d04c707957701c0854127816f7ed41d1d5e0b406217a2078fa70</sha256>
                         </configuration>
                     </execution>
                 </executions>
