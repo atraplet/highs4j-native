@@ -61,6 +61,7 @@ jobs:
     steps:
       - *checkout_lib
       - *checkout_patches
+      - *checkout_metis
       - name: Build
         shell: bash
         run: |
@@ -79,6 +80,7 @@ jobs:
     steps:
       - *checkout_lib
       - *checkout_patches
+      - *checkout_metis
       - name: Build
         shell: bash
         run: |
