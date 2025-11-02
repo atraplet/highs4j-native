@@ -1,0 +1,71 @@
+name: Build Natives
+
+on:
+  workflow_call:
+
+env:
+  LIB_NAME: highs
+  LIB_VERSION: v1.12.0.
+  REPOSITORY: ERGO-Code/HiGHS
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - &checkout_lib
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ env.REPOSITORY }}
+          ref: ${{ env.LIB_VERSION }}
+      - &checkout_patches
+        uses: actions/checkout@v5
+        with:
+          sparse-checkout: patches
+          path: this-repo
+      - name: Build
+        shell: bash
+        run: |
+          git apply this-repo/patches/*.patch
+          cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" -S ./ -B ./build
+          cmake --build ./build
+      - name: Upload library
+        uses: actions/upload-artifact@v5
+        with:
+          name: lib${{ env.LIB_NAME }}.so
+          path: rust_wrapper/target/release/lib${{ env.LIB_NAME }}.so
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - *checkout_lib
+      - *checkout_patches
+      - name: Build
+        shell: bash
+        run: |
+          git apply this-repo/patches/*.patch
+          cmake -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows \
+            -DCLARABEL_CARGO_FEATURES="faer-sparse,pardiso-mkl" -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" \
+            -S ./ -B ./build
+          cmake --build ./build --config Release --target libclarabel_c
+      - name: Upload library
+        uses: actions/upload-artifact@v5
+        with:
+          name: ${{ env.LIB_NAME }}.dll
+          path: rust_wrapper/target/release/${{ env.LIB_NAME }}.dll
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - *checkout_lib
+      - *checkout_patches
+      - name: Build
+        shell: bash
+        run: |
+          git apply this-repo/patches/*.patch
+          cmake -DCMAKE_BUILD_TYPE=Release -DCLARABEL_CARGO_FEATURES="faer-sparse" -G Xcode -S ./ -B ./build
+          cmake --build ./build --config Release --target libclarabel_c
+      - name: Upload library
+        uses: actions/upload-artifact@v5
+        with:
+          name: lib${{ env.LIB_NAME }}.dylib
+          path: rust_wrapper/target/release/lib${{ env.LIB_NAME }}.dylib
