@@ -7,7 +7,7 @@
 [![Apache License, Version 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/atraplet/highs4j-native/blob/master/LICENSE)
 
 highs4j-native (HiGHS Solver for Java Native Libraries) bundles shared library release binaries
-of [HiGHS](https://ergo-code.github.io/HiGHS) for [highs4j](https://github.com/atraplet/highs4j) for Linux (linux_64),
+of [HiGHS](https://highs.dev) for [highs4j](https://github.com/atraplet/highs4j) for Linux (linux_64),
 Windows (windows_64), and MacOS (osx_arm64).
 
 ## Usage
@@ -22,9 +22,13 @@ your `pom.xml`
     <groupId>com.ustermetrics</groupId>
     <artifactId>highs4j-native</artifactId>
     <version>x.y.z</version>
+     <classifier>platform</classifier>
     <scope>runtime</scope>
 </dependency>
 ```
+
+where `x.y.z` is the version of the library and `platform` is one of `linux_64`, `windows_64`, or `osx_arm64`. If no
+`classifier` is specified, the library will include binaries for all platforms.
 
 ## Build
 
@@ -51,6 +55,6 @@ release.
 ## Credits
 
 This project is based on the native open source mathematical programming
-solver [HiGHS](https://ergo-code.github.io/HiGHS), which is developed and maintained by Julian Hall, Ivet Galabova, Qi
-Huangfu, Leona Gottwald, Michael Feldmeier, and other contributors. For details see https://ergo-code.github.io/HiGHS
-and https://github.com/ERGO-Code/HiGHS.
+solver [HiGHS](https://highs.dev), which is developed and maintained by Julian Hall, Ivet Galabova, Qi
+Huangfu, Leona Gottwald, Michael Feldmeier, and other contributors. For details see https://highs.dev,
+https://ergo-code.github.io/HiGHS, and https://github.com/ERGO-Code/HiGHS.
