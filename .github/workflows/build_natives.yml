@@ -67,4 +67,4 @@ jobs:
         uses: actions/upload-artifact@v5
         with:
           name: lib${{ env.LIB_NAME }}.dylib
-          path: rust_wrapper/target/release/lib${{ env.LIB_NAME }}.dylib
+          path: build/Release/lib/lib${{ env.LIB_NAME }}.dylib
