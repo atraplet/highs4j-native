@@ -61,8 +61,8 @@ jobs:
         shell: bash
         run: |
           git apply this-repo/patches/*.patch
-          cmake -DCMAKE_BUILD_TYPE=Release -DCLARABEL_CARGO_FEATURES="faer-sparse" -G Xcode -S ./ -B ./build
-          cmake --build ./build --config Release --target libclarabel_c
+          cmake -DHIGHSINT64=ON -DJAVA=ON -DCMAKE_BUILD_TYPE=Release -G Xcode -S ./ -B ./build
+          cmake --build ./build --config Release --target highs
       - name: Upload library
         uses: actions/upload-artifact@v5
         with:
