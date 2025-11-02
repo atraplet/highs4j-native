@@ -26,13 +26,13 @@ jobs:
         shell: bash
         run: |
           git apply this-repo/patches/*.patch
-          cmake -DCMAKE_BUILD_TYPE=Release -DJAVA=ON -G "Unix Makefiles" -S ./ -B ./build
-          cmake --build ./build --target all
+          cmake -DHIGHSINT64=ON -DJAVA=ON -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" -S ./ -B ./build
+          cmake --build ./build --target highs
       - name: Upload library
         uses: actions/upload-artifact@v5
         with:
           name: lib${{ env.LIB_NAME }}.so
-          path: rust_wrapper/target/release/lib${{ env.LIB_NAME }}.so
+          path: build/lib/lib${{ env.LIB_NAME }}.so
 
   build-windows:
     runs-on: windows-latest
