@@ -26,8 +26,8 @@ jobs:
         shell: bash
         run: |
           git apply this-repo/patches/*.patch
-          cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" -S ./ -B ./build
-          cmake --build ./build
+          cmake -DCMAKE_BUILD_TYPE=Release -DJAVA=ON -G "Unix Makefiles" -S ./ -B ./build
+          cmake --build ./build --target all
       - name: Upload library
         uses: actions/upload-artifact@v5
         with:
