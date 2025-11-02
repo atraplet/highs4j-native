@@ -4,9 +4,9 @@ on:
   workflow_call:
 
 env:
-  LIB_NAME: clarabel_c
-  LIB_VERSION: v0.11.1
-  REPOSITORY: oxfordcontrol/Clarabel.cpp
+  LIB_NAME: highs
+  LIB_VERSION: v1.12.0.
+  REPOSITORY: ERGO-Code/HiGHS
 
 jobs:
   build-linux:
@@ -15,7 +15,6 @@ jobs:
       - &checkout_lib
         uses: actions/checkout@v5
         with:
-          submodules: 'recursive'
           repository: ${{ env.REPOSITORY }}
           ref: ${{ env.LIB_VERSION }}
       - &checkout_patches
@@ -27,9 +26,8 @@ jobs:
         shell: bash
         run: |
           git apply this-repo/patches/*.patch
-          cmake -DCMAKE_BUILD_TYPE=Release -DCLARABEL_CARGO_FEATURES="faer-sparse,pardiso-mkl" -G "Unix Makefiles" \
-            -S ./ -B ./build
-          cmake --build ./build --target libclarabel_c
+          cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" -S ./ -B ./build
+          cmake --build ./build
       - name: Upload library
         uses: actions/upload-artifact@v5
         with:
