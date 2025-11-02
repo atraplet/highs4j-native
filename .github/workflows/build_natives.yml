@@ -7,6 +7,8 @@ env:
   LIB_NAME: highs
   LIB_VERSION: v1.12.0
   REPOSITORY: ERGO-Code/HiGHS
+  METIS_REPOSITORY: galabovaa/METIS
+  METIS_BRANCH: 521-ts
 
 jobs:
   build-linux:
@@ -22,11 +24,31 @@ jobs:
         with:
           sparse-checkout: patches
           path: this-repo
+      - &checkout_metis
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ env.METIS_REPOSITORY }}
+          ref: ${{ env.METIS_BRANCH }}
+          path: metis
+      - name: Install OpenBLAS
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libopenblas-dev
+      - name: Build METIS
+        shell: bash
+        run: |
+          cd metis
+          cmake -DGKLIB_PATH=./GKlib -DCMAKE_INSTALL_PREFIX=../metis-installation -DCMAKE_BUILD_TYPE=Release \
+            -G "Unix Makefiles" -S ./ -B ./build
+          cmake --build build
+          cmake --install build
       - name: Build
         shell: bash
         run: |
           git apply this-repo/patches/*.patch
-          cmake -DHIGHSINT64=ON -DJAVA=ON -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" -S ./ -B ./build
+          cmake -DHIGHSINT64=ON -DJAVA=ON -DHIPO=ON -DMETIS_ROOT=metis-installation -DCMAKE_BUILD_TYPE=Release \
+            -G "Unix Makefiles" -S ./ -B ./build
           cmake --build ./build --target highs
       - name: Upload library
         uses: actions/upload-artifact@v5
