@@ -1,20 +1,16 @@
-Index: CMakeLists.txt
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
 diff --git a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	(revision 755a8e027a99a8d4ecf153a8dde4b2a767cdf384)
-+++ b/CMakeLists.txt	(date 1762094774869)
-@@ -81,8 +81,10 @@
+index 9409bf17a..0749ac96c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -81,8 +81,10 @@ option(FORTRAN "Build Fortran interface" OFF)
  message(STATUS "Build Fortran: ${FORTRAN}")
  option(CSHARP "Build CSharp interface" OFF)
  message(STATUS "Build CSharp: ${CSHARP}")
 +option(JAVA "Build Java interface" OFF)
 +message(STATUS "Build Java: ${JAVA}")
-
+ 
 -if (FORTRAN OR CSHARP)
 +if (FORTRAN OR CSHARP OR JAVA)
    set(BUILD_SHARED_LIBS ON)
  endif()
-
+ 
