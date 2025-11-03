@@ -32,8 +32,8 @@ jobs:
       - name: Set LD_LIBRARY_PATH
         if: matrix.os == 'ubuntu-latest'
         run: |
-          echo "LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu" >> $GITHUB_ENV
-          ls -la src/main/resources/natives/linux_64
-          ldd src/main/resources/natives/linux_64/libhighs.so
+          sudo apt-get update
+          sudo apt-get install -y libopenblas-dev
+      #          echo "LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu" >> $GITHUB_ENV
       - name: Build with Maven
         run: mvn -B clean verify --file pom.xml
