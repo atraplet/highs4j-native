@@ -30,11 +30,7 @@ jobs:
           repository: ${{ env.METIS_REPOSITORY }}
           ref: ${{ env.METIS_BRANCH }}
           path: metis
-      - name: Install OpenBLAS
-        shell: bash
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libopenblas-dev
+      - uses: ./.github/actions/install-openblas
       - name: Build METIS
         shell: bash
         run: |
