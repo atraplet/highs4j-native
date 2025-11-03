@@ -30,7 +30,7 @@ jobs:
           repository: ${{ env.METIS_REPOSITORY }}
           ref: ${{ env.METIS_BRANCH }}
           path: metis
-      - uses: ./.github/actions/install-openblas
+      - uses: ./this-repo/.github/actions/install-openblas
       - name: Build METIS
         shell: bash
         run: |
@@ -58,7 +58,7 @@ jobs:
       - *checkout_lib
       - *checkout_patches
       - *checkout_metis
-      - uses: ./.github/actions/install-openblas
+      - uses: ./this-repo/.github/actions/install-openblas
       - name: Build METIS
         shell: bash
         run: |
