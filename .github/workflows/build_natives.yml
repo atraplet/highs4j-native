@@ -94,11 +94,20 @@ jobs:
       - *checkout_lib
       - *checkout_patches
       - *checkout_metis
+      - name: Build METIS
+        shell: bash
+        run: |
+          cd metis
+          cmake -DGKLIB_PATH=./GKlib -DCMAKE_INSTALL_PREFIX=../metis-installation -DCMAKE_BUILD_TYPE=Release \
+            -G Xcode -S ./ -B ./build
+          cmake --build ./build --config Release
+          cmake --install ./build
       - name: Build
         shell: bash
         run: |
           git apply this-repo/patches/*.patch
-          cmake -DHIGHSINT64=ON -DJAVA=ON -DCMAKE_BUILD_TYPE=Release -G Xcode -S ./ -B ./build
+          cmake -DHIGHSINT64=ON -DJAVA=ON -DHIPO=ON -DMETIS_ROOT=metis-installation -DCMAKE_BUILD_TYPE=Release \
+            -G Xcode -S ./ -B ./build
           cmake --build ./build --config Release --target highs
       - name: Upload library
         uses: actions/upload-artifact@v5
