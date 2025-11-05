@@ -11,6 +11,17 @@ env:
   LIB_NAME: highs
 
 jobs:
+  build-debug:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set PATH
+        shell: bash
+        run: |
+          echo "C:/vcpkg/installed/x64-windows/bin" >> $GITHUB_PATH
+      - name: Check PATH
+        run: echo %PATH%
+
   build-natives:
     uses: atraplet/highs4j-native/.github/workflows/build_natives.yml@feature/enable_hipo
 
@@ -37,8 +48,9 @@ jobs:
           sudo apt-get install -y libopenblas-dev
       - name: Install OpenBLAS on Windows and add to PATH
         if: matrix.os == 'windows-latest'
+        shell: bash
         run: |
           vcpkg install openblas[threads]
-          echo "C:\vcpkg\installed\x64-windows\bin" >> $GITHUB_PATH
+          echo "C:/vcpkg/installed/x64-windows/bin" >> $GITHUB_PATH
       - name: Build with Maven
         run: mvn -B clean verify --file pom.xml
