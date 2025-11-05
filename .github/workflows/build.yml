@@ -37,9 +37,8 @@ jobs:
           sudo apt-get install -y libopenblas-dev
       - name: Install OpenBLAS on Windows and add to PATH
         if: matrix.os == 'windows-latest'
-        shell: bash
         run: |
           vcpkg install openblas[threads]
-          echo "PATH=C:/vcpkg/installed/x64-windows/bin:$PATH" >> $GITHUB_ENV
+          echo "C:\vcpkg\installed\x64-windows\bin" >> $GITHUB_PATH
       - name: Build with Maven
         run: mvn -B clean verify --file pom.xml
