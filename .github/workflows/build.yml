@@ -18,7 +18,7 @@ jobs:
       - name: Set PATH
         shell: bash
         run: |
-          find C:\ -name "openblas.dll"
+          find C:\\vcpkg -name "openblas.dll"
           echo "C:\vcpkg\installed\x64-windows\bin" >> $GITHUB_PATH
       - name: Check PATH
         run: $Env:Path
