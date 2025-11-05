@@ -63,6 +63,7 @@ jobs:
       - *checkout_patches
       - *checkout_metis
       - name: Install OpenBLAS on Windows
+        shell: bash
         run: |
           vcpkg install openblas[threads]
       - name: Build METIS

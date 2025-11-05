@@ -11,48 +11,35 @@ env:
   LIB_NAME: highs
 
 jobs:
-  build-debug:
-    runs-on: windows-latest
+  build-natives:
+    uses: atraplet/highs4j-native/.github/workflows/build_natives.yml@feature/enable_hipo
+
+  build:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
+    needs: [ build-natives ]
     steps:
       - uses: actions/checkout@v5
-      - name: Set PATH
+      - uses: ./.github/actions/download-libs-and-detect-jdk
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          java-version: ${{ env.JDK_VERSION }}
+          distribution: 'temurin'
+          cache: maven
+      - name: Install OpenBLAS on Linux
+        if: matrix.os == 'ubuntu-latest'
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libopenblas-dev
+      - name: Install OpenBLAS on Windows and add to PATH
+        if: matrix.os == 'windows-latest'
         shell: bash
         run: |
           vcpkg install openblas[threads]
-          find "C:\vcpkg" -name "openblas.dll"
           echo "C:\vcpkg\installed\x64-windows\bin" >> $GITHUB_PATH
-      - name: Check PATH
-        run: $Env:Path
-
-#  build-natives:
-#    uses: atraplet/highs4j-native/.github/workflows/build_natives.yml@feature/enable_hipo
-#
-#  build:
-#    strategy:
-#      matrix:
-#        os: [ ubuntu-latest, windows-latest, macos-latest ]
-#    runs-on: ${{ matrix.os }}
-#    needs: [ build-natives ]
-#    steps:
-#      - uses: actions/checkout@v5
-#      - uses: ./.github/actions/download-libs-and-detect-jdk
-#      - name: Set up JDK
-#        uses: actions/setup-java@v5
-#        with:
-#          java-version: ${{ env.JDK_VERSION }}
-#          distribution: 'temurin'
-#          cache: maven
-#      - name: Install OpenBLAS on Linux
-#        if: matrix.os == 'ubuntu-latest'
-#        shell: bash
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get install -y libopenblas-dev
-#      - name: Install OpenBLAS on Windows and add to PATH
-#        if: matrix.os == 'windows-latest'
-#        shell: bash
-#        run: |
-#          vcpkg install openblas[threads]
-#          echo "C:/vcpkg/installed/x64-windows/bin" >> $GITHUB_PATH
-#      - name: Build with Maven
-#        run: mvn -B clean verify --file pom.xml
+      - name: Build with Maven
+        run: mvn -B clean verify --file pom.xml
