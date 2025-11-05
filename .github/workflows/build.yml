@@ -18,9 +18,9 @@ jobs:
       - name: Set PATH
         shell: bash
         run: |
-          vcpkg install openblas[threads]
+#          vcpkg install openblas[threads]
           echo "C:\vcpkg\installed\x64-windows\bin" >> $GITHUB_PATH
-          find C:/vcpkg/installed/x64-windows/ -name "openblas.dll"
+          find C:/vcpkg -name "openblas.dll"
       - name: Check PATH
         run: $Env:Path
 
