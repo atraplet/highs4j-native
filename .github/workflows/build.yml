@@ -12,7 +12,7 @@ env:
 
 jobs:
   build-natives:
-    uses: atraplet/highs4j-native/.github/workflows/build_natives.yml@feature/enable_hipo
+    uses: atraplet/highs4j-native/.github/workflows/build_natives.yml@master
 
   build:
     strategy:
