@@ -20,7 +20,7 @@ jobs:
         run: |
           echo "C:/vcpkg/installed/x64-windows/bin" >> $GITHUB_PATH
       - name: Check PATH
-        run: echo %PATH%
+        run: $Env:Path
 
   build-natives:
     uses: atraplet/highs4j-native/.github/workflows/build_natives.yml@feature/enable_hipo
