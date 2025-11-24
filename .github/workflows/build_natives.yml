@@ -15,17 +15,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - &checkout_lib
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: ${{ env.REPOSITORY }}
           ref: ${{ env.LIB_VERSION }}
       - &checkout_patches
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           sparse-checkout: patches
           path: this-repo
       - &checkout_metis
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: ${{ env.METIS_REPOSITORY }}
           ref: ${{ env.METIS_BRANCH }}
