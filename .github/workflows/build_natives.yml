@@ -51,7 +51,7 @@ jobs:
             -G "Unix Makefiles" -S ./ -B ./build
           cmake --build ./build --target highs
       - name: Upload library
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: lib${{ env.LIB_NAME }}.so
           path: build/lib/lib${{ env.LIB_NAME }}.so
@@ -83,7 +83,7 @@ jobs:
             -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" -S ./ -B ./build
           cmake --build ./build --config Release --target highs
       - name: Upload library
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ env.LIB_NAME }}.dll
           path: build/Release/bin/${{ env.LIB_NAME }}.dll
@@ -110,7 +110,7 @@ jobs:
             -G Xcode -S ./ -B ./build
           cmake --build ./build --config Release --target highs
       - name: Upload library
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: lib${{ env.LIB_NAME }}.dylib
           path: build/Release/lib/lib${{ env.LIB_NAME }}.dylib
