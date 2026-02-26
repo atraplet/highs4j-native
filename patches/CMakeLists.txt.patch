@@ -1,8 +1,7 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 9409bf17a..0749ac96c 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -81,8 +81,10 @@ option(FORTRAN "Build Fortran interface" OFF)
+--- a/CMakeLists.txt	(revision f3cf9ff73a5d323fa268ba8b155db0b8b02f7438)
++++ b/CMakeLists.txt	(date 1772121750023)
+@@ -83,8 +83,10 @@
  message(STATUS "Build Fortran: ${FORTRAN}")
  option(CSHARP "Build CSharp interface" OFF)
  message(STATUS "Build CSharp: ${CSHARP}")
