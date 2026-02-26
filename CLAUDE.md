@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-highs4j-native bundles pre-compiled native shared libraries of the [HiGHS](https://highs.dev) mathematical programming solver for use with the [highs4j](https://github.com/atraplet/highs4j) Java wrapper. It distributes platform-specific binaries (Linux x86_64, Windows x86_64, macOS ARM64) via Maven Central.
+highs4j-native bundles pre-compiled native shared libraries of the [HiGHS](https://highs.dev) mathematical programming solver for use by [highs4j](https://github.com/atraplet/highs4j). It distributes platform-specific binaries (Linux x86_64, Windows x86_64, macOS ARM64) via Maven Central.
 
 **This project contains no Java source code in `src/main/java`.** It is purely a native library resource bundler. The only Java code is a single test.
 
