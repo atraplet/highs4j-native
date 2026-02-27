@@ -27,7 +27,7 @@ distributed under the [zlib license](https://opensource.org/license/zlib).
 
 * rcm - a C++ code which computes the reverse Cuthill McKee (RCM) ordering of
 the nodes of a graph, https://people.sc.fsu.edu/~jburkardt/cpp_src/rcm/rcm.html,
-is distributed under the [MIT license](https://opensource.org/license/MIT).
+is distributed under the [MIT license](https://opensource.org/license/mit).
 
 * zstr - A C++ header-only ZLib wrapper, https://github.com/mateidavid/zstr,
-is distributed under the [MIT license](https://opensource.org/license/MIT).
+is distributed under the [MIT license](https://opensource.org/license/mit).
