@@ -5,29 +5,29 @@ CH-8610 Uster, Switzerland, info@ustermetrics.com, www.ustermetrics.com
 This library bundles content from the following software:
 
 * HiGHS - Linear optimization software, https://github.com/ERGO-Code/HiGHS,
-is distributed under the [MIT License](https://opensource.org/license/mit).
+is distributed under the [MIT License](https://opensource.org/license/mit)
 
 HiGHS depends on code in the HiGHS extern directory, which was originally
 developed by third-parties and is licensed under additional licenses:
 
 * AMD - a set of routines for permuting sparse matrices prior to factorization,
 https://github.com/DrTimothyAldenDavis/SuiteSparse, AMD directory, is distributed
-under the [BSD-3 license](https://opensource.org/license/bsd-3-clause).
+under the [BSD-3 license](https://opensource.org/license/bsd-3-clause)
 
 * GKlib - a library of various helper routines and frameworks used by many of
 the lab's software, https://github.com/KarypisLab/GKlib, is distributed under the
-[Apache 2.0 License](https://opensource.org/license/apache-2-0).
+[Apache 2.0 License](https://opensource.org/license/apache-2-0)
 
 * METIS - Serial Graph Partitioning and Fill-reducing Matrix Ordering,
 https://github.com/KarypisLab/METIS, is distributed under the
-[Apache 2.0 License](https://opensource.org/license/apache-2-0).
+[Apache 2.0 License](https://opensource.org/license/apache-2-0)
 
 * pdqsort - Pattern-defeating quicksort, https://github.com/orlp/pdqsort, is
-distributed under the [zlib license](https://opensource.org/license/zlib).
+distributed under the [zlib license](https://opensource.org/license/zlib)
 
 * rcm - a C++ code which computes the reverse Cuthill McKee (RCM) ordering of
 the nodes of a graph, https://people.sc.fsu.edu/~jburkardt/cpp_src/rcm/rcm.html,
-is distributed under the [MIT license](https://opensource.org/license/mit).
+is distributed under the [MIT license](https://opensource.org/license/mit)
 
 * zstr - A C++ header-only ZLib wrapper, https://github.com/mateidavid/zstr,
-is distributed under the [MIT license](https://opensource.org/license/mit).
+is distributed under the [MIT license](https://opensource.org/license/mit)
