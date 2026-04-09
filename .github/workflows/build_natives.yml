@@ -5,7 +5,7 @@ on:
 
 env:
   LIB_NAME: highs
-  LIB_VERSION: v1.13.1
+  LIB_VERSION: v1.14.0
   REPOSITORY: ERGO-Code/HiGHS
 
 jobs:
